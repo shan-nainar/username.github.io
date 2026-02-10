@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>EliteCare | Compassionate Care • Smart Staffing • STAFFin</title>
+  <meta name="description" content="Personalised UK healthcare, elderly & home care, powered by intelligent staffing automation with STAFFin."/>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --primary-light: #3b82f6;
+      --accent: #10b981;
+      --accent-dark: #059669;
+      --dark: #0f172a;
+      --gray: #475569;
+      --light: #f8fafc;
+      --light-gray: #e2e8f0;
+      --white: #ffffff;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      color: var(--dark);
+      background: var(--light);
+      line-height: 1.6;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* Hero */
+    header {
+      position: relative;
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: white;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80') center/cover no-repeat;
+      opacity: 0.18;
+      mix-blend-mode: luminosity;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .logo {
+      font-size: 2.8rem;
+      font-weight: 800;
+      margin-bottom: 1.5rem;
+      letter-spacing: -1px;
+    }
+
+    header h1 {
+      font-size: clamp(2.8rem, 8vw, 5.2rem);
+      margin-bottom: 1.5rem;
+      text-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+
+    header p {
+      font-size: clamp(1.25rem, 4vw, 1.55rem);
+      max-width: 760px;
+      margin: 0 auto 2.5rem;
+      opacity: 0.95;
+    }
+
+    .btn-group {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1.2rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--accent);
+      color: white;
+      font-weight: 600;
+      padding: 16px 40px;
+      border-radius: 9999px;
+      text-decoration: none;
+      transition: all 0.35s ease;
+      box-shadow: 0 10px 25px rgba(16,185,129,0.35);
+      font-size: 1.15rem;
+    }
+
+    .btn:hover {
+      transform: translateY(-6px) scale(1.04);
+      box-shadow: 0 20px 40px rgba(16,185,129,0.45);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid white;
+      color: white;
+    }
+
+    .btn-outline:hover {
+      background: white;
+      color: var(--primary-dark);
+      transform: translateY(-6px);
+    }
+
+    /* Section */
+    section {
+      padding: 120px 0;
+    }
+
+    h2 {
+      font-size: clamp(2.6rem, 6vw, 4.2rem);
+      text-align: center;
+      margin-bottom: 4rem;
+      color: var(--primary-dark);
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+      gap: 50px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 20px;
+      padding: 48px 40px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.08);
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 6px;
+      background: linear-gradient(90deg, var(--primary), var(--primary-light));
+    }
+
+    .card:hover {
+      transform: translateY(-16px);
+      box-shadow: 0 30px 70px rgba(0,0,0,0.14);
+    }
+
+    .card-icon {
+      font-size: 3.2rem;
+      color: var(--primary);
+      margin-bottom: 1.8rem;
+    }
+
+    .card h3 {
+      font-size: 2.1rem;
+      margin-bottom: 1.4rem;
+      color: var(--primary-dark);
+    }
+
+    /* Features */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 40px;
+      margin-top: 5rem;
+    }
+
+    .feature {
+      text-align: center;
+      padding: 40px 28px;
+      border-radius: 16px;
+      background: rgba(37,99,235,0.04);
+      transition: all 0.35s;
+    }
+
+    .feature:hover {
+      background: rgba(37,99,235,0.08);
+      transform: translateY(-10px);
+    }
+
+    .feature i {
+      font-size: 3rem;
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+    }
+
+    .feature h4 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: var(--dark);
+    }
+
+    /* Stats */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 40px;
+      text-align: center;
+      margin: 6rem 0;
+    }
+
+    .stat-number {
+      font-size: 3.8rem;
+      font-weight: 800;
+      color: var(--primary);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: 1.2rem;
+      color: var(--gray);
+      margin-top: 0.8rem;
+    }
+
+    /* Team */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 50px;
+    }
+
+    .team-member {
+      text-align: center;
+      padding: 2rem;
+      border-radius: 16px;
+      background: white;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+      transition: all 0.35s;
+    }
+
+    .team-member:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+    }
+
+    .team-member .avatar-placeholder {
+      width: 140px;
+      height: 140px;
+      background: linear-gradient(135deg, var(--primary-light), var(--primary));
+      border-radius: 50%;
+      margin: 0 auto 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 3.5rem;
+      font-weight: bold;
+    }
+
+    .team-member h4 {
+      font-size: 1.55rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .team-member .role {
+      color: var(--primary);
+      font-weight: 600;
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+    }
+
+    /* CTA */
+    .cta {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: white;
+      text-align: center;
+      padding: 140px 0;
+      position: relative;
+    }
+
+    .cta h2 {
+      color: white;
+      font-size: clamp(2.8rem, 7vw, 4.8rem);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--dark);
+      color: #cbd5e1;
+      padding: 100px 0 60px;
+      text-align: center;
+    }
+
+    .footer-contact {
+      margin: 3rem 0;
+      font-size: 1.2rem;
+    }
+
+    .footer-contact a {
+      color: var(--accent);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-contact a:hover {
+      color: #34d399;
+    }
+
+    @media (max-width: 768px) {
+      section { padding: 80px 0; }
+      .btn { padding: 14px 36px; font-size: 1.05rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero -->
+  <header>
+    <div class="container">
+      <div class="hero-content">
+        <div class="logo">EliteCare</div>
+        <h1>Innovating Care and Technology for a Better Tomorrow</h1>
+        <p>Compassionate personalised healthcare meets intelligent workforce automation — delivered through our powerful STAFFin platform.</p>
+        
+        <div class="btn-group">
+          <a href="#demo" class="btn"><i class="fas fa-calendar-check"></i> Book a Demo</a>
+          <a href="#staffin" class="btn btn-outline"><i class="fas fa-rocket"></i> Explore STAFFin</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Services -->
+  <section id="services">
+    <div class="container">
+      <h2>Our Core Services</h2>
+
+      <div class="grid-2">
+        <div class="card">
+          <div class="card-icon"><i class="fas fa-heart"></i></div>
+          <h3>Care & Support</h3>
+          <p style="font-size:1.1rem; margin-bottom:2rem;">Personalised, compassionate care delivered with dignity across the UK.</p>
+          <ul style="list-style:none; font-size:1.05rem; line-height:2.1;">
+            <li><i class="fas fa-home" style="color:var(--primary); margin-right:12px;"></i><strong>Home Healthcare</strong> — Tailored care in your own home</li>
+            <li><i class="fas fa-user-md" style="color:var(--primary); margin-right:12px;"></i><strong>Specialised Care</strong> — Medical & non-medical support</li>
+            <li><i class="fas fa-user-clock" style="color:var(--primary); margin-right:12px;"></i><strong>Elderly Care</strong> — Comfort, independence & respect</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <div class="card-icon"><i class="fas fa-cogs"></i></div>
+          <h3>Smart Staffing & IT</h3>
+          <p style="font-size:1.1rem; margin-bottom:2rem;">STAFFin — next-generation workforce management automation.</p>
+          <ul style="list-style:none; font-size:1.05rem; line-height:2.1;">
+            <li><i class="fas fa-user-plus" style="color:var(--primary); margin-right:12px;"></i>Smart candidate matching</li>
+            <li><i class="fas fa-calendar-alt" style="color:var(--primary); margin-right:12px;"></i>Automated scheduling & shift planning</li>
+            <li><i class="fas fa-file-invoice-dollar" style="color:var(--primary); margin-right:12px;"></i>Timesheets → Payroll automation</li>
+            <li><i class="fas fa-chart-line" style="color:var(--primary); margin-right:12px;"></i>Real-time analytics & compliance</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Features -->
+      <div class="features" id="staffin">
+        <div class="feature">
+          <i class="fas fa-mouse-pointer"></i>
+          <h4>One-Click Simplicity</h4>
+          <p>Automate the entire staffing lifecycle effortlessly</p>
+        </div>
+        <div class="feature">
+          <i class="fas fa-bolt"></i>
+          <h4>Lightning Fast Matching</h4>
+          <p>Smart engine places the right people faster</p>
+        </div>
+        <div class="feature">
+          <i class="fas fa-eye"></i>
+          <h4>Full Visibility</h4>
+          <p>Real-time insights into workforce & performance</p>
+        </div>
+        <div class="feature">
+          <i class="fas fa-shield-alt"></i>
+          <h4>Compliance Made Easy</h4>
+          <p>Stay audit-ready with automated tracking</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section style="background: linear-gradient(to bottom, #f8fafc, #e0f2fe);">
+    <div class="container">
+      <div class="stats">
+        <div>
+          <div class="stat-number">15+</div>
+          <div class="stat-label">Years Healthcare Experience</div>
+        </div>
+        <div>
+          <div class="stat-number">20%</div>
+          <div class="stat-label">Average Efficiency Gain</div>
+        </div>
+        <div>
+          <div class="stat-number">100%</div>
+          <div class="stat-label">Automated Payroll & Scheduling</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team -->
+  <section>
+    <div class="container">
+      <h2>Our Leadership Team</h2>
+      
+      <div class="team-grid">
+        <div class="team-member">
+          <div class="avatar-placeholder">MT</div>
+          <h4>Maureen Thompson</h4>
+          <div class="role">Director</div>
+          <p>Visionary healthcare leader with 15+ years driving innovation and excellence at EliteCare.</p>
+        </div>
+
+        <div class="team-member">
+          <div class="avatar-placeholder">SS</div>
+          <h4>Sandeep Pulickal Santhosh</h4>
+          <div class="role">Operations Manager</div>
+          <p>Engineering expert delivering impactful app solutions and 15% testing efficiency uplift.</p>
+        </div>
+
+        <div class="team-member">
+          <div class="avatar-placeholder">JM</div>
+          <h4>Jerald Mathews Martin</h4>
+          <div class="role">Business Extensions IND</div>
+          <p>Entrepreneur building strong India partnerships and sustainable growth channels.</p>
+        </div>
+
+        <div class="team-member">
+          <div class="avatar-placeholder">SK</div>
+          <h4>Shan Koyamparambil Nainar</h4>
+          <div class="role">Project Manager</div>
+          <p>Software optimisation specialist — delivered 15% development efficiency gain.</p>
+        </div>
+
+        <div class="team-member">
+          <div class="avatar-placeholder">RD</div>
+          <h4>Rosmi Das</h4>
+          <div class="role">Designs Lead</div>
+          <p>Creative force behind modern UI/UX — 20% better on-time delivery last year.</p>
+        </div>
+
+        <div class="team-member">
+          <div class="avatar-placeholder">FK</div>
+          <h4>Firoz Khan Fasaludheen Kunju</h4>
+          <div class="role">Business Extensions UAE</div>
+          <p>Strategic leader expanding EliteCare's next-gen presence in the UAE.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="cta" id="demo">
+    <div class="container">
+      <h2>Ready to Transform Your Care & Staffing?</h2>
+      <p style="font-size:1.4rem; max-width:760px; margin:2rem auto 3rem; opacity:0.95;">
+        Automate operations • Place talent faster • Deliver exceptional care • Gain powerful insights — all with STAFFin.
+      </p>
+      <a href="mailto:office@elitecas.co.uk?subject=EliteCare%20Demo%20Request" class="btn" style="background:var(--white); color:var(--primary); font-size:1.4rem; padding:20px 60px;">
+        <i class="fas fa-video"></i> Book Your Demo Now
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <h2 style="color:white; font-size:3rem; margin-bottom:2rem;">EliteCare</h2>
+      
+      <div class="footer-contact">
+        <p><i class="fas fa-envelope" style="margin-right:12px;"></i> <a href="mailto:office@elitecas.co.uk">office@elitecas.co.uk</a></p>
+        <p style="margin:1.5rem 0;"><i class="fas fa-phone" style="margin-right:12px;"></i> 123-456-7890</p>
+        <p>
+          <i class="fas fa-map-marker-alt" style="margin-right:12px;"></i>
+          The Work Place, Heighington Lane<br>
+          Aycliffe Business Park, Newton Aycliffe<br>
+          County Durham, DL5 6AH, United Kingdom
+        </p>
+      </div>
+
+      <p style="margin-top:4rem; font-size:0.98rem; opacity:0.7;">
+        © 2026 EliteCare — Innovating Care & Technology
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>
