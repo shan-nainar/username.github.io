@@ -433,14 +433,13 @@
       </div>
     </div>
 
-    <!-- Submitted Requests Display -->
-    <div class="submissions" id="submissionsSection" style="display:none;">
-      <h3><i class="fas fa-database"></i> Recent Demo Requests</h3>
-      <div id="submissionsList"></div>
-    </div>
+
   </div>
 
   <script>
+    // Google Apps Script deployment URL
+    const GOOGLE_SHEET_URL = 'https://script.google.com/macros/s/AKfycbwT-Ak3AXttUrIkIYIHrkCGMInFB6HIVBQJ38WwHvNjjKlTsnWDJD72cS_xwqMqF3AGUA/exec';
+
     // Handle form submission
     document.getElementById('demoForm').addEventListener('submit', function(e) {
       e.preventDefault();
@@ -453,57 +452,32 @@
         organization: document.getElementById('organization').value,
         role: document.getElementById('role').value,
         interested: document.getElementById('interested').value,
-        message: document.getElementById('message').value,
-        timestamp: new Date().toLocaleString()
+        message: document.getElementById('message').value
       };
 
-      // Save to localStorage
-      let submissions = JSON.parse(localStorage.getItem('demoSubmissions')) || [];
-      submissions.unshift(formData); // Add to beginning of array
-      localStorage.setItem('demoSubmissions', JSON.stringify(submissions));
+      // Send data to Google Sheets
+      fetch(GOOGLE_SHEET_URL, {
+        method: 'POST',
+        body: JSON.stringify(formData)
+      })
+      .then(response => {
+        // Show success message
+        const successMessage = document.getElementById('successMessage');
+        successMessage.classList.add('show');
 
-      // Show success message
-      const successMessage = document.getElementById('successMessage');
-      successMessage.classList.add('show');
+        // Reset form
+        document.getElementById('demoForm').reset();
 
-      // Reset form
-      this.reset();
-
-      // Hide success message after 5 seconds
-      setTimeout(() => {
-        successMessage.classList.remove('show');
-      }, 5000);
-
-      // Refresh submissions display
-      displaySubmissions();
+        // Hide success message after 5 seconds
+        setTimeout(() => {
+          successMessage.classList.remove('show');
+        }, 5000);
+      })
+      .catch(error => {
+        console.error('Error submitting form:', error);
+        alert('There was an error submitting your form. Please try again.');
+      });
     });
-
-    // Display saved submissions
-    function displaySubmissions() {
-      const submissions = JSON.parse(localStorage.getItem('demoSubmissions')) || [];
-      const submissionsSection = document.getElementById('submissionsSection');
-      const submissionsList = document.getElementById('submissionsList');
-
-      if (submissions.length > 0) {
-        submissionsSection.style.display = 'block';
-        submissionsList.innerHTML = '';
-
-        submissions.forEach(submission => {
-          const item = document.createElement('div');
-          item.className = 'submission-item';
-          item.innerHTML = `
-            <div class="submission-name">${submission.name}</div>
-            <div class="submission-email">${submission.email}</div>
-            <div class="submission-email">${submission.organization}</div>
-            <div class="submission-date">Submitted: ${submission.timestamp}</div>
-          `;
-          submissionsList.appendChild(item);
-        });
-      }
-    }
-
-    // Load and display submissions on page load
-    window.addEventListener('load', displaySubmissions);
   </script>
 </body>
 </html>
